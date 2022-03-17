@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title><%= locals.title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <h1>Contact List</h1>
+
+    <div id="abc">
+      <ul>
+        <% for (let i of contact_list) { %>
+
+        <li class="contact">
+          <div class="details">
+            <p><%= i.name %></p>
+            <p><%= i.phone %></p>
+          </div>
+          <div class="delete-button">
+            <a href="/delete-contact/?phone=<%=i.phone %>">
+              <p>Delete</p>
+            </a>
+          </div>
+        </li>
+
+        <% } %>
+      </ul>
+    </div>
+
+    <div>
+      <form action="/add-to-list" method="post">
+        <input type="text" name="name" placeholder="Enter Name" required />
+        <input
+          type="number"
+          name="phone"
+          placeholder="Enter Phone Number"
+          required
+        />
+
+        <button type="submit">Add Contact</button>
+      </form>
+    </div>
+  </body>
+</html>
